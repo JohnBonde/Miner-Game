@@ -1,0 +1,33 @@
+body {
+height: 100vh;
+}
+
+#top {
+  display: flex;
+  justify-content: center;
+  color: aqua;
+  text-shadow: 1px 1px black;
+  margin-top: 1em;
+}
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -100;
+}
+#blue-steel {
+  display: flex;
+  align-content: center;
+  margin-left: 3em;
+}
+
+#upgrades {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2em;
+  margin-top: 5em;
+}
