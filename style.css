@@ -43,7 +43,6 @@ font-family: 'Orbitron', sans-serif;
   align-items: flex-end;
   justify-content: center;
   padding: 2em;
-  margin-top: 5em;
 }
 
 #scoreboard {
@@ -53,3 +52,4 @@ font-family: 'Orbitron', sans-serif;
   margin-top: 3em;
   color: #3391ff;
 }
+
