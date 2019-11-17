@@ -10,6 +10,11 @@ let clickUpgrades = {
     price: 1000,
     quantity: 0,
     multiplier: 50,
+  },
+  left: {
+    price: 1000000,
+    quantity: 0,
+    multiplier: 10000
   }
 }
 
@@ -23,6 +28,11 @@ let autoUpgrades = {
     price: 10000,
     quantity: 0,
     multiplier: 100
+  },
+  magnum: {
+    price: 10000000,
+    quantity: 0,
+    multiplier: 100000
   }
 }
 
@@ -32,11 +42,14 @@ let elemPickaxe = document.querySelector("#pickaxe");
 let elemCart = document.querySelector("#cart");
 let elemMiner = document.querySelector("#miner");
 let elemDrill = document.querySelector("#drill");
+let elemLeft = document.querySelector("#left");
+let elemMagnum = document.querySelector("#magnum");
 
 function mine() {
   blueSteel++;
   blueSteel += clickUpgrades.pickaxe.quantity * clickUpgrades.pickaxe.multiplier;
   blueSteel += clickUpgrades.carts.quantity * clickUpgrades.carts.multiplier;
+  blueSteel += clickUpgrades.left.quantity * clickUpgrades.left.multiplier;
   update()
 }
 
@@ -52,10 +65,16 @@ function update() {
     Miner: ${autoUpgrades.miners.quantity} - $${autoUpgrades.miners.price}`
   elemDrill.innerHTML = `
     Drill: ${autoUpgrades.drills.quantity} - $${autoUpgrades.drills.price}`
+  elemLeft.innerHTML = `
+    Turn Left: ${clickUpgrades.left.quantity} - $${clickUpgrades.left.price}`
+  elemMagnum.innerHTML = `
+    Magnum: ${autoUpgrades.magnum.quantity} - $${autoUpgrades.magnum.price}`
   pickUpdate();
   minerUpdate();
   cartUpdate();
-  drillUpdate()
+  drillUpdate();
+  leftUpdate();
+  magnumUpdate()
 }
 
 function pickUpdate() {
@@ -95,6 +114,24 @@ function drillUpdate() {
   }
 }
 
+function leftUpdate() {
+  if (blueSteel >= clickUpgrades.left.price) {
+    elemLeft.disabled = false
+  }
+  else {
+    elemLeft.disabled = true
+  }
+}
+
+function magnumUpdate() {
+  if (blueSteel >= autoUpgrades.magnum.price) {
+    elemMagnum.disabled = false
+  }
+  else {
+    elemMagnum.disabled = true
+  }
+}
+
 function buyPickaxe() {
   if (blueSteel >= clickUpgrades.pickaxe.price) {
     clickUpgrades.pickaxe.quantity++;
@@ -114,6 +151,17 @@ function buyCart() {
     clickUpgrades.carts.price += 100;
     elemCart.innerHTML = `
     Cart: ${clickUpgrades.carts.quantity} - $${clickUpgrades.carts.price}`;
+    update()
+  }
+}
+
+function buyLeft() {
+  if (blueSteel >= clickUpgrades.left.price) {
+    clickUpgrades.left.quantity++;
+    blueSteel -= clickUpgrades.left.price;
+    clickUpgrades.left.price += 100000;
+    elemLeft.innerHTML = `
+    Mangum: ${clickUpgrades.left.quantity} - $${clickUpgrades.left.price}`;
     update()
   }
 }
@@ -140,9 +188,22 @@ function buyDrill() {
     update()
   }
 }
+
+function buyMagnum() {
+  if (blueSteel >= autoUpgrades.magnum.price) {
+    autoUpgrades.magnum.quantity++;
+    blueSteel -= autoUpgrades.magnum.price;
+    autoUpgrades.magnum.price += 1000000;
+    elemMagnum.innerHTML = `
+    Magnum: ${autoUpgrades.magnum.quantity} - $${autoUpgrades.magnum.price}`
+    update()
+  }
+}
+
 function collectAutoUpgrades() {
   blueSteel += autoUpgrades.miners.quantity * autoUpgrades.miners.multiplier;
   blueSteel += autoUpgrades.drills.quantity * autoUpgrades.drills.multiplier;
+  blueSteel += autoUpgrades.magnum.quantity * autoUpgrades.magnum.multiplier;
   update()
 }
 
