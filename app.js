@@ -57,18 +57,18 @@ function update() {
   elemCounter.innerHTML = `
   <h1>Blue Steel: ${blueSteel}</h1>`
   elemPickaxe.innerHTML = `
-    Pickaxe: ${clickUpgrades.pickaxe.quantity} - $${clickUpgrades.pickaxe.price}
+    Pickaxe: ${clickUpgrades.pickaxe.quantity} - $${clickUpgrades.pickaxe.price} Plus: 1/Click
     `
   elemCart.innerHTML = `
-    Cart: ${clickUpgrades.carts.quantity} - $${clickUpgrades.carts.price}`
+    Cart: ${clickUpgrades.carts.quantity} - $${clickUpgrades.carts.price} Plus: 50/Click`
   elemMiner.innerHTML = `
-    Miner: ${autoUpgrades.miners.quantity} - $${autoUpgrades.miners.price}`
+    Miner: ${autoUpgrades.miners.quantity} - $${autoUpgrades.miners.price} Plus: 10/3 Sec`
   elemDrill.innerHTML = `
-    Drill: ${autoUpgrades.drills.quantity} - $${autoUpgrades.drills.price}`
+    Drill: ${autoUpgrades.drills.quantity} - $${autoUpgrades.drills.price} Plus: 100/3 Sec`
   elemLeft.innerHTML = `
-    Turn Left: ${clickUpgrades.left.quantity} - $${clickUpgrades.left.price}`
+    Turn Left: ${clickUpgrades.left.quantity} - $${clickUpgrades.left.price} Plus: 10000/Click`
   elemMagnum.innerHTML = `
-    Magnum: ${autoUpgrades.magnum.quantity} - $${autoUpgrades.magnum.price}`
+    Magnum: ${autoUpgrades.magnum.quantity} - $${autoUpgrades.magnum.price} Plus: 100000/3 Sec`
   pickUpdate();
   minerUpdate();
   cartUpdate();
@@ -138,7 +138,7 @@ function buyPickaxe() {
     blueSteel -= clickUpgrades.pickaxe.price;
     clickUpgrades.pickaxe.price += 10;
     elemPickaxe.innerHTML = `
-    Pickaxe: ${clickUpgrades.pickaxe.quantity} - $${clickUpgrades.pickaxe.price}
+    Pickaxe: ${clickUpgrades.pickaxe.quantity} - $${clickUpgrades.pickaxe.price} Plus: 1/Click
     `;
     update();
   }
@@ -150,7 +150,7 @@ function buyCart() {
     blueSteel -= clickUpgrades.carts.price;
     clickUpgrades.carts.price += 100;
     elemCart.innerHTML = `
-    Cart: ${clickUpgrades.carts.quantity} - $${clickUpgrades.carts.price}`;
+    Cart: ${clickUpgrades.carts.quantity} - $${clickUpgrades.carts.price} Plus: 50/Click`;
     update()
   }
 }
@@ -161,7 +161,7 @@ function buyLeft() {
     blueSteel -= clickUpgrades.left.price;
     clickUpgrades.left.price += 100000;
     elemLeft.innerHTML = `
-    Mangum: ${clickUpgrades.left.quantity} - $${clickUpgrades.left.price}`;
+    Mangum: ${clickUpgrades.left.quantity} - $${clickUpgrades.left.price} Plus: 10000/Click`;
     update()
   }
 }
@@ -172,7 +172,7 @@ function buyMiner() {
     blueSteel -= autoUpgrades.miners.price;
     autoUpgrades.miners.price += 50;
     elemMiner.innerHTML = `
-    Miner: ${autoUpgrades.miners.quantity} - $${autoUpgrades.miners.price}`;
+    Miner: ${autoUpgrades.miners.quantity} - $${autoUpgrades.miners.price} Plus: 10/3 Sec`;
     update()
   }
 
@@ -184,7 +184,7 @@ function buyDrill() {
     blueSteel -= autoUpgrades.drills.price;
     autoUpgrades.drills.price += 1000;
     elemDrill.innerHTML = `
-    Drill: ${autoUpgrades.drills.quantity} - $${autoUpgrades.drills.price}`
+    Drill: ${autoUpgrades.drills.quantity} - $${autoUpgrades.drills.price} Plus: 100/3 Sec`
     update()
   }
 }
@@ -195,7 +195,7 @@ function buyMagnum() {
     blueSteel -= autoUpgrades.magnum.price;
     autoUpgrades.magnum.price += 1000000;
     elemMagnum.innerHTML = `
-    Magnum: ${autoUpgrades.magnum.quantity} - $${autoUpgrades.magnum.price}`
+    Magnum: ${autoUpgrades.magnum.quantity} - $${autoUpgrades.magnum.price} Plus: 100000/3 Sec`
     update()
   }
 }
